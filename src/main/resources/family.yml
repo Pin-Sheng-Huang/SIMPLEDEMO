@@ -1,0 +1,25 @@
+#EXAMPLE
+# 1.一個家庭有爸爸、媽媽、孩子。
+# 2.家庭有一個名字(family-name)叫"happy family"
+# 3.爸爸有名字和年齡這兩個屬性
+# 4.媽媽有兩個別名
+# 5.孩子除了name和年齡兩個屬性,還有一個friends的集合
+# 6.每個friend有兩個屬性:hobby(愛好)和性別(sex)
+family:
+  family-name: "happy family"
+  father:
+    name: Adonis
+    age: 20
+  mother:
+    alias:
+      - lovely
+      - ailice
+  child:
+    name: ${family.father.name:Adonis2} #先判斷前面的值如果沒有的話就下一個值
+    age: 28
+    friends:
+      - hobby: swimming
+        sex: male
+      - hobby: basketball
+        sex: female
+      - {hobby: football,sex: female} #類對象集合寫法

@@ -1,0 +1,65 @@
+server:
+  port: 8890
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+#   primary:
+    url: jdbc:mysql://localhost:3306/article?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  freemarker:
+    cache: false #緩存配置 開發戒斷應該配置為false 因為經常會改
+    suffix: .ftl # 模板文件後綴名字
+    charset: UTF-8
+    template-loader-path: classpath:/templates/
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: validate
+    database: mysql
+    show-sql: true
+    # redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 0
+      # password:
+    pool:
+     # 最大可用连接数（默认为8，负数表示无限）
+     max-active: 8
+     # 最大空闲连接数（默认为8，负数表示无限）
+     max-idle: 8
+     # 最小空闲连接数（默认为0，该值只有为正数才有用）
+     min-idle: 0
+     # 从连接池中获取连接最大等待时间（默认为-1，单位为毫秒，负数表示无限）
+     max-wait: -1
+
+
+#    多數據連線需要加primary主要的,與secondary第二個 (配置在DataSourceConfig)
+#   secondary:
+#     jdbc-url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+#     username: root
+#     password: 123456
+#     driver-class-name: com.mysql.cj.jdbc.Driver
+
+context:
+  listener:
+   classes: com.example.demo.config.event.MyListener3
+
+  messages:
+    encoding: UTF-8
+  springfox:
+    documentation:
+      swagger-ui:
+        enabled: true
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+
+
