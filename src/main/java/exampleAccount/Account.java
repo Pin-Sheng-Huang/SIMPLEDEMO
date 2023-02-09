@@ -16,7 +16,7 @@ public class Account {
     private String userName;
     private String password;
     private double balance;//帐户余额
-    private double quoteMoney;//取现余额
+    private double quoteMoney;//当日取钱限额
     private String Sex;
 
 
@@ -34,7 +34,7 @@ public class Account {
     }
 
     public void setSex(String sex) {
-        Sex = sex;
+        this.Sex = sex;
     }
 
     public String getCardId() {
